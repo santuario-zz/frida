@@ -47,7 +47,7 @@ function setup() {
   loadImages();
 
   //sound
-  dogSound = loadSound('assets/sounds/dog.mp3', soundLoaded);
+  //dogSound = loadSound('assets/sounds/dog.mp3', soundLoaded);
   setupGif();
 
   noStroke();
@@ -119,10 +119,10 @@ function draw() {
     rotate(angleGoggle);
     if (mouthR > 0.1) {
       image(imgNose_0, 0, 0, distance * 2, distance * 2);
-      dogSound.setVolume(1.0);
+      //dogSound.setVolume(1.0);
     } else {
       image(imgNose_1, 0, 0, distance * 2, distance * 2);
-      dogSound.setVolume(0.0);
+      //dogSound.setVolume(0.0);
     }
     resetMatrix();
 
