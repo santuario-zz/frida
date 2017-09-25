@@ -74,7 +74,7 @@ function loadImages() {
 
 function draw() {
   clear();
-  image(videoInput, 0, 60, 480, 360)
+  image(videoInput, 0, 60, 480, 360);
 
   // get array of face marker positions [x, y] format
   var positions = ctracker.getCurrentPosition();
