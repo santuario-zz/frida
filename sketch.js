@@ -154,7 +154,8 @@ function mousePressed() {
    if (!recording) {
      gif.render();
    }*/
-
+  //var fileName = 'frida' +navigator.userAgent.toLowerCase():
+  //saveCanvas(fileName, 'jpg');
   saveCanvas('frida', 'jpg');
 }
 
@@ -172,7 +173,7 @@ function setupGif() {
 
 function DetectBrowser() {
   var uagent = navigator.userAgent.toLowerCase();
-  if (uagent.search("iphone") > -1 || uagent.search("ipad") > -1 || uagent.search("android") > -1 || uagent.search("blackberry") > -1 || uagent.search("webos") > -1 || uagent.search("safari") < -1) {
+  if (uagent.search("iphone") > -1 || uagent.search("ipad") > -1 || uagent.search("android") > -1 || uagent.search("blackberry") > -1 || uagent.search("webos") > -1 || uagent.indexOf("safari") != -1 ) {
    //Chrome
    window.location.href = "indexM.html";
   }
