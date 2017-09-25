@@ -1,5 +1,6 @@
 var ctracker;
 var videoInput
+var cnv;
 
 
 //frida
@@ -14,7 +15,8 @@ var loaderCounter = 0;
 
 
 var _isTesting = false;
-
+var recording = false;
+var gif;
 /*
 function preload() {
   dogSound = loadSound('assets/sounds/dog_1.mp3');
@@ -29,7 +31,7 @@ function setup() {
   videoInput.id('p5video');
 
   // setup canvas
-  var cnv = createCanvas(windowWidth, windowHeight);
+  cnv = createCanvas(windowWidth, windowHeight);
   cnv.id('p5canvas');
   cnv.position(0, 0);
 
@@ -46,7 +48,7 @@ function setup() {
 
   //sound
   dogSound = loadSound('assets/sounds/dog.mp3', soundLoaded);
-
+  setupGif();
 
   noStroke();
   background(51);
@@ -124,12 +126,36 @@ function draw() {
     }
     resetMatrix();
 
-   //image(imgOver_0, 0, 0, width, width);
+  }
 
-
+  image(imgOver_0, 0, 0, 1080, 1080);
+  
+  
+   if (recording && frameCount % 3 == 0) {
+    gif.addFrame(cnv.elt, {delay: 1, copy: true});
   }
 }
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
+}
+
+
+function mousePressed() {
+  recording = !recording;
+  if (!recording) {
+    gif.render();
+  }
+}
+
+function setupGif() {
+  gif = new GIF({
+    workers: 2,
+    quality: 40
+  });
+
+  gif.on('finished', function(blob) {
+    window.open(URL.createObjectURL(blob));
+    setupGif();
+  });
 }
