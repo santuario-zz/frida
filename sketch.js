@@ -73,7 +73,7 @@ function loadImages() {
 }
 
 function draw() {
-  // clear();
+  clear();
   image(videoInput, 0, 60, 480, 360);
 
   // get array of face marker positions [x, y] format
@@ -154,11 +154,11 @@ function mousePressed() {
    if (!recording) {
      gif.render();
    }*/
-  var fileName = 'frida_' +navigator.vendor;
-  fileName = fileName.replace(/\s/g, '');
-  fileName = fileName.split('.').join("");
-  saveCanvas(fileName, 'jpg');
-  //saveCanvas('frida', 'jpg');
+  //var fileName = 'frida' +navigator.vendor;
+  //fileName = fileName.replace(/\s/g, '');
+  //fileName = fileName.split('.').join("");
+  //saveCanvas(fileName, 'jpg');
+  saveCanvas('frida', 'jpg');
 }
 
 function setupGif() {
@@ -175,8 +175,13 @@ function setupGif() {
 
 function DetectBrowser() {
   var uagent = navigator.userAgent.toLowerCase();
+  var fileName = 'frida_' +navigator.vendor;
+  fileName = fileName.replace(/\s/g, '');
+  fileName = fileName.split('.').join("");
+  fileName = fileName.split(',').join("");
+  
    //print(navigator.vendor);
-  if (uagent.search("iphone") > -1 || uagent.search("ipad") > -1 || uagent.search("android") > -1 || uagent.search("blackberry") > -1 || uagent.search("webos") > -1 ) {
+  if (uagent.search("iphone") > -1 || uagent.search("ipad") > -1 || uagent.search("android") > -1 || uagent.search("blackberry") > -1 || uagent.search("webos") > -1 || (fileName == 'AppleComputerInc') ) {
     //Chrome
  
       window.location.href = "indexM.html";
