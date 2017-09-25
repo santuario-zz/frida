@@ -26,10 +26,10 @@ function setup() {
 
   // setup camera capture
   videoInput = createCapture(VIDEO);
-  videoInput.size(480, 480);
+  videoInput.size(480, 360);
   videoInput.position(0, 0);
   videoInput.id('p5video');
-
+  videoInput.hide();
   // setup canvas
   cnv = createCanvas(windowWidth, windowHeight);
   cnv.id('p5canvas');
@@ -74,6 +74,7 @@ function loadImages() {
 
 function draw() {
   clear();
+  image(videoInput,0,60,480,360)
 
   // get array of face marker positions [x, y] format
   var positions = ctracker.getCurrentPosition();
@@ -85,7 +86,7 @@ function draw() {
         // set the color of the ellipse based on position on screen
         fill(map(positions[i][0], width * 0.33, width * 0.66, 0, 255), map(positions[i][1], height * 0.33, height * 0.66, 0, 255), 255);
         // draw ellipse at each position point
-        ellipse(positions[i][0], positions[i][1], 10, 10);
+        ellipse(positions[i][0], 60+positions[i][1], 10, 10);
       }
     }
 
@@ -93,8 +94,8 @@ function draw() {
 
       var distanceEars = abs(positions[4][0] - positions[10][0]);
       //image(imgEars, positions[0][0] - distanceEars / 4, positions[21][1] - distanceEars / 5, distanceEars * 1.5, distanceEars * 1.5 * 0.6);
-      image(imgEarsL, positions[0][0] - distanceEars / 2, positions[21][1] - distanceEars / 3, distanceEars, distanceEars * 1.5);
-      image(imgEarsR, positions[14][0] - distanceEars / 2, positions[17][1] - distanceEars / 3, distanceEars, distanceEars * 1.5);
+      image(imgEarsL, positions[0][0] - distanceEars / 2, 60+positions[21][1] - distanceEars / 3, distanceEars, distanceEars * 1.5);
+      image(imgEarsR, positions[14][0] - distanceEars / 2, 60+positions[17][1] - distanceEars / 3, distanceEars, distanceEars * 1.5);
 
 
 
@@ -104,7 +105,7 @@ function draw() {
       var angleGoggle = Math.atan2(v2Goggle.y - v1Goggle.y, v2Goggle.x - v1Goggle.x);
 
       applyMatrix();
-      translate(v1Goggle.x, v1Goggle.y - distanceGoggle / 3);
+      translate(v1Goggle.x, 60+v1Goggle.y - distanceGoggle / 3);
       rotate(angleGoggle);
       image(imgGoggle, 0, 0, distanceGoggle * 1.1, distanceGoggle * 1.1 * 0.6);
       resetMatrix();
@@ -116,7 +117,7 @@ function draw() {
       var mouthR = mouthH / faceH;
 
       applyMatrix();
-      translate(positions[41][0] - distance, positions[41][1]);
+      translate(positions[41][0] - distance, 60+positions[41][1]);
       rotate(angleGoggle);
       if (mouthR > 0.1) {
         image(imgNose_0, 0, 0, distance * 2.5, distance * 2.5);
@@ -153,8 +154,8 @@ function mousePressed() {
    if (!recording) {
      gif.render();
    }*/
-   
-   saveCanvas('miau','jpg');
+
+  saveCanvas('frida', 'jpg');
 }
 
 function setupGif() {
@@ -169,11 +170,8 @@ function setupGif() {
   });
 }
 
- function DetectBrowser()
-    {
-       var uagent = navigator.userAgent.toLowerCase();
-       if (uagent.search("iphone") > -1 || uagent.search("ipad") > -1 
-       || uagent.search("android") > -1 || uagent.search("blackberry") > -1
-       || uagent.search("webos") > -1 || uagent.search("safari") < -1)
-          window.location.href ="indexM.html";
-    }
+function DetectBrowser() {
+  var uagent = navigator.userAgent.toLowerCase();
+  if (uagent.search("iphone") > -1 || uagent.search("ipad") > -1 || uagent.search("android") > -1 || uagent.search("blackberry") > -1 || uagent.search("webos") > -1 || uagent.search("safari") > -1)
+    window.location.href = "indexM.html";
+}
