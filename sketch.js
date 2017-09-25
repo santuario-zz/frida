@@ -178,10 +178,9 @@ function DetectBrowser() {
   var fileName = 'frida_' +navigator.vendor;
   fileName = fileName.replace(/\s/g, '');
   fileName = fileName.split('.').join("");
-  fileName = fileName.split(',').join("");
-  
+
    //print(navigator.vendor);
-  if (uagent.search("iphone") > -1 || uagent.search("ipad") > -1 || uagent.search("android") > -1 || uagent.search("blackberry") > -1 || uagent.search("webos") > -1 || (fileName == 'AppleComputerInc') ) {
+  if (uagent.search("iphone") > -1 || uagent.search("ipad") > -1 || uagent.search("android") > -1 || uagent.search("blackberry") > -1 || uagent.search("webos") > -1 || (fileName == 'AppleComputer,Inc') ) {
     //Chrome
  
       window.location.href = "indexM.html";
