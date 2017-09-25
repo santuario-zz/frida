@@ -111,18 +111,18 @@ function draw() {
       //image(imgGoggle, positions[0][0], positions[0][1] - distanceGoggle / 3, distanceGoggle * 1.1, distanceGoggle * 1.1 * 0.6);
 
       var distance = abs(positions[44][0] - positions[50][0]);
-      var mouthH = positions[57][1] - positions[60][1];
-      var faceH = positions[7][1] - positions[33][1];
+      var mouthH = abs(positions[57][1] - positions[60][1]);
+      var faceH = abs(positions[7][1] - positions[33][1]);
       var mouthR = mouthH / faceH;
 
       applyMatrix();
       translate(positions[41][0] - distance, positions[41][1]);
       rotate(angleGoggle);
       if (mouthR > 0.1) {
-        image(imgNose_0, 0, 0, distance * 2, distance * 2);
+        image(imgNose_0, 0, 0, distance * 2.5, distance * 2.5);
         //dogSound.setVolume(1.0);
       } else {
-        image(imgNose_1, 0, 0, distance * 2, distance * 2);
+        image(imgNose_1, 0, 0, distance * 2.5, distance * 2.5);
         //dogSound.setVolume(0.0);
       }
       resetMatrix();
