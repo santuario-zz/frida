@@ -73,7 +73,7 @@ function loadImages() {
 }
 
 function draw() {
-  clear();
+ // clear();
   image(videoInput, 0, 60, 480, 360);
 
   // get array of face marker positions [x, y] format
@@ -173,7 +173,7 @@ function setupGif() {
 
 function DetectBrowser() {
   var uagent = navigator.userAgent.toLowerCase();
-  if (uagent.search("iphone") > -1 || uagent.search("ipad") > -1 || uagent.search("android") > -1 || uagent.search("blackberry") > -1 || uagent.search("webos") > -1 || uagent.indexOf("safari") != -1 ) {
+  if (uagent.search("iphone") > -1 || uagent.search("ipad") > -1 || uagent.search("android") > -1 || uagent.search("blackberry") > -1 || uagent.search("webos") > -1  ) {
    //Chrome
    window.location.href = "indexM.html";
   }
