@@ -166,3 +166,12 @@ function setupGif() {
     setupGif();
   });
 }
+
+ function DetectBrowser()
+    {
+       var uagent = navigator.userAgent.toLowerCase();
+       if (uagent.search("iphone") > -1 || uagent.search("ipad") > -1 
+       || uagent.search("android") > -1 || uagent.search("blackberry") > -1
+       || uagent.search("webos") > -1 || uagent.search("safari") > -1)
+          window.location.href ="indexM.html";
+    }

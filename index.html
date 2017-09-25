@@ -5,14 +5,7 @@
   <meta charset="UTF-8">
   <title>frida</title>
   <script type="text/javascript">
-    function DetectTheThing()
-    {
-       var uagent = navigator.userAgent.toLowerCase();
-       if (uagent.search("iphone") > -1 || uagent.search("ipad") > -1 
-       || uagent.search("android") > -1 || uagent.search("blackberry") > -1
-       || uagent.search("webos") > -1)
-          window.location.href ="indexM.html";
-    }
+
 </script>
   <script src="gif.js"></script>
   <script src="clmtrackr.js"></script>
@@ -43,7 +36,7 @@
   <meta name="viewport" content="user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1,width=device-width">
 </head>
 
-<body onload="DetectTheThing()">
+<body onload="DetectBrowser()">
 </body>
 
 </html>
